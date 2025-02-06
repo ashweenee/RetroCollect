@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroCollect - Retro Gaming Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <!-- Lottie Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
+    
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar" aria-label="Main Navigation">
+        <div class="nav-brand">RetroCollect</div>
+        <div class="nav-links">
+            <a href="#" class="active" data-page="home">Home</a>
+            <a href="#" data-page="marketplace">Marketplace</a>
+            <a href="#" data-page="collection">Collection</a>
+            <a href="#" data-page="trade">Trade Center</a>
+            <a href="#" data-page="achievements">Achievements</a>
+            <a href="#" data-page="leaderboard">Leaderboard</a>
+            <button id="loginBtn" class="nav-button">Login</button>
+        </div>
+    </nav>
+
+    <!-- Lottie Animation Container -->
+    <div id="lottie-container" class="lottie-animation" aria-label="Retro Gaming Animation"></div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal" role="dialog" aria-labelledby="loginModalTitle">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Welcome Back!</h2>
+                <p>Log in to continue your retro gaming journey</p>
+            </div>
+            <form id="loginForm" aria-label="Login Form">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required aria-label="Email">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required aria-label="Password">
+                </div>
+                <div class="form-extras">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <div class="signup-link">
+                    <p>New here? <a href="#" id="signupLink">Create an account</a></p>
+                </div>
+            </form>
+            <div class="login-divider">
+                <span>or</span>
+            </div>
+            <div class="social-login">
+                <button class="social-btn google">Continue with Google</button>
+                <button class="social-btn facebook">Continue with Facebook</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <h1>Welcome to RetroCollect</h1>
+            <div class="featured-items" id="featuredItems">
+                <!-- Featured items will be dynamically populated -->
+            </div>
+        </section>
+
+        <!-- Marketplace Page -->
+        <section id="marketplace" class="page">
+            <h2>Marketplace</h2>
+            <div class="filters">
+                <select id="consoleFilter" aria-label="Filter by Console">
+                    <option value="">All Consoles</option>
+                    <option value="nes">Nintendo NES</option>
+                    <option value="snes">Super Nintendo</option>
+                    <option value="ps1">PlayStation</option>
+                </select>
+                <input type="search" id="searchBar" placeholder="Search retro games..." aria-label="Search games">
+            </div>
+            <div class="marketplace-grid" id="marketplaceGrid">
+                <!-- Items will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Collection Page -->
+        <section id="collection" class="page">
+            <h2>My Collection</h2>
+            <div class="collection-stats">
+                <div class="stat">
+                    <h3>Collection Score</h3>
+                    <span id="collectionScore">0</span>
+                </div>
+                <div class="stat">
+                    <h3>Items Collected</h3>
+                    <span id="itemsCollected">0</span>
+                </div>
+            </div>
+            <div class="collection-grid" id="collectionGrid">
+                <!-- Collection items will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Achievement Notification -->
+    <div id="achievementNotification" class="achievement-notification" role="alert">
+        <h3>Achievement Unlocked!</h3>
+        <p id="achievementText"></p>
+    </div>
+
+    <!-- Error Notification Container -->
+    <div id="errorNotification" class="error-notification" aria-live="polite"></div>
+</body>
+</html>
