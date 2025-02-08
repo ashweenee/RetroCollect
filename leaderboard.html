@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroCollect - Leaderboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">RetroCollect</div>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="collection.html">Collection</a>
+            <a href="tradeCenter.html">Trade Center</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="leaderboard.html" class="active">Leaderboard</a>
+            <button id="loginBtn" class="nav-button">Login</button>
+        </div>
+    </nav>
+    <div class="leaderboard-container">
+        <div class="leaderboard-header">
+            <h1 class="leaderboard-title">LEADERBOARD</h1>
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="switchTab('global')">Global</button>
+                <button class="tab-button" onclick="switchTab('friends')">Friends</button>
+                <button class="tab-button" onclick="switchTab('local')">Local</button>
+            </div>
+        </div>
+
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Collection</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+            </tbody>
+        </table>
+    </div>
+    <script src="JS\leaderboard.js"></script>
+</body>
+</html>
