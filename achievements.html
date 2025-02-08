@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroCollect - Achievements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">RetroCollect</div>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="collection.html">Collection</a>
+            <a href="tradeCenter.html">Trade Center</a>
+            <a href="achievements.html" class="active">Achievements</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <button id="loginBtn" class="nav-button">Login</button>
+        </div>
+    </nav>
+
+    <div class="achievements-container">
+        <div class="achievements-header">
+            <h1>Achievements</h1>
+            <div class="achievement-progress">
+                <span>Achievement Progress: </span>
+                <span class="progress-count">25/50</span>
+            </div>
+        </div>
+
+        <div class="achievements-grid">
+            <!-- Bronze Collector Achievement -->
+            <div class="achievement-card" data-badge-id="bronze-collector">
+                <div class="achievement-image">
+                    <img src="path-to-your-badge-image/bronze-collector.png" alt="Bronze Collector Badge">
+                </div>
+                <div class="achievement-info">
+                    <h3>Bronze Collector</h3>
+                    <div class="achievement-progress-bar">
+                        <div class="progress-fill" style="width: 50%"></div>
+                    </div>
+                    <p>8/15 Collected</p>
+                </div>
+                <button class="view-badge-btn">View Badge</button>
+            </div>
+
+            <!-- NES Collector Achievement -->
+            <div class="achievement-card" data-badge-id="nes-collector">
+                <div class="achievement-image">
+                    <img src="path-to-your-badge-image/nes-collector.png" alt="NES Collector Badge">
+                </div>
+                <div class="achievement-info">
+                    <h3>NES Collector</h3>
+                    <div class="achievement-progress-bar">
+                        <div class="progress-fill" style="width: 50%"></div>
+                    </div>
+                    <p>8/15 Collected</p>
+                </div>
+                <button class="view-badge-btn">View Badge</button>
+            </div>
+
+            <!-- SEGA Sage Achievement -->
+            <div class="achievement-card" data-badge-id="sega-sage">
+                <div class="achievement-image">
+                    <img src="path-to-your-badge-image/sega-sage.png" alt="SEGA Sage Badge">
+                </div>
+                <div class="achievement-info">
+                    <h3>SEGA Sage</h3>
+                    <div class="achievement-progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <p>6/10 Collected</p>
+                </div>
+                <button class="view-badge-btn">View Badge</button>
+            </div>
+
+            <!-- Rare Finder Achievement (Locked) -->
+            <div class="achievement-card locked" data-badge-id="rare-finder">
+                <div class="achievement-image">
+                    <img src="path-to-your-badge-image/rare-finder-locked.png" alt="Rare Finder Badge Locked">
+                </div>
+                <div class="achievement-info">
+                    <h3>Rare Finder</h3>
+                    <div class="achievement-progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <p>Locked</p>
+                </div>
+                <button class="view-badge-btn" disabled>View Badge</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Badge Details Modal -->
+    <div id="badgeModal" class="modal">
+        <div class="modal-content badge-details-content">
+            <span class="close-button">&times;</span>
+            <div class="badge-details">
+                <div class="badge-image-large">
+                    <img id="modalBadgeImage" src="" alt="Badge">
+                </div>
+                <div class="badge-info">
+                    <h2 id="modalBadgeTitle"></h2>
+                    <div class="progress-section">
+                        <h3>Progress</h3>
+                        <div class="progress-percentage">48% Complete</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 48%"></div>
+                        </div>
+                        <p class="progress-detail">8/15 Nintendo Collections Complete</p>
+                    </div>
+                    <div class="how-to-earn">
+                        <h3>How to Earn</h3>
+                        <p id="modalBadgeDescription"></p>
+                    </div>
+                    <div class="badge-actions">
+                        <button class="action-btn view-collection">View Collection</button>
+                        <button class="action-btn share-badge">Share Badge</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content share-content">
+            <span class="close-button">&times;</span>
+            <h2>Share Achievement</h2>
+            <div class="share-options">
+                <button class="share-btn telegram">Telegram</button>
+                <button class="share-btn tiktok">TikTok</button>
+                <button class="share-btn instagram">Instagram</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS\achievements.js"></script>
+</body>
+</html>
