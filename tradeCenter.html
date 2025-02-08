@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroCollect - Trade Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">RetroCollect</div>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="collection.html">Collection</a>
+            <a href="trade-center.html" class="active">Trade Center</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <button id="loginBtn" class="nav-button">Login</button>
+        </div>
+    </nav>
+
+    <div class="trade-center-container">
+        <div class="trade-center-header">
+            <h1>Trade Center</h1>
+            <div class="trade-center-tabs">
+                <button class="tab-btn active" data-tab="active-offers">Active Offers</button>
+                <button class="tab-btn" data-tab="propose-trade">Propose Trade</button>
+            </div>
+        </div>
+
+        <!-- Active Offers Tab Content -->
+        <div class="tab-content active" id="active-offers">
+            <div class="trade-offers-grid">
+                <!-- Trade Offer Card 1 -->
+                <div class="trade-offer-card">
+                    <div class="trader-info">
+                        <img src="path-to-your-avatar/user1.png" alt="@grrrrrr avatar" class="trader-avatar">
+                        <span class="trader-name">@grrrrrr</span>
+                    </div>
+                    <div class="trade-items">
+                        <div class="requested-item">
+                            <h3>Item Requested</h3>
+                            <img src="path-to-your-game-image/game1.png" alt="Requested game">
+                        </div>
+                        <div class="offered-item">
+                            <h3>Item Offered</h3>
+                            <img src="path-to-your-game-image/game2.png" alt="Offered game">
+                        </div>
+                    </div>
+                    <button class="view-trade-btn">View</button>
+                </div>
+
+                <!-- Trade Offer Card 2 -->
+                <div class="trade-offer-card">
+                    <div class="trader-info">
+                        <img src="path-to-your-avatar/user2.png" alt="@princesspeachy avatar" class="trader-avatar">
+                        <span class="trader-name">@princesspeachy</span>
+                    </div>
+                    <div class="trade-items">
+                        <div class="requested-item">
+                            <h3>Item Requested</h3>
+                            <img src="path-to-your-game-image/game3.png" alt="Requested game">
+                        </div>
+                        <div class="offered-item">
+                            <h3>Item Offered</h3>
+                            <img src="path-to-your-game-image/game4.png" alt="Offered game">
+                        </div>
+                    </div>
+                    <button class="view-trade-btn">View</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Propose Trade Tab Content -->
+        <div class="tab-content" id="propose-trade">
+            <div class="trade-proposal-container">
+                <div class="trade-selection">
+                    <div class="your-offer">
+                        <h2>Select items to offer</h2>
+                        <div class="item-selection-grid">
+                            <!-- Items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="traders-section">
+                        <h2>Select Trader</h2>
+                        <div class="traders-grid">
+                            <div class="trader-card" data-username="mrbean">
+                                <img src="path-to-your-avatar/mrbean.png" alt="@mrbean avatar">
+                                <span>@mrbean</span>
+                            </div>
+                            <div class="trader-card" data-username="jolibee">
+                                <img src="path-to-your-avatar/jolibee.png" alt="@jolibee avatar">
+                                <span>@jolibee</span>
+                            </div>
+                            <div class="trader-card" data-username="kfc">
+                                <img src="path-to-your-avatar/kfc.png" alt="@kfc avatar">
+                                <span>@kfc</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="next-step-btn">Next: Select desired items</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trade Details Modal -->
+    <div id="tradeModal" class="modal">
+        <div class="modal-content trade-details-content">
+            <span class="close-button">&times;</span>
+            <div class="trade-details">
+                <h2>Confirm Trade</h2>
+                <div class="trade-items-detail">
+                    <div class="your-offer-detail">
+                        <h3>Your offer:</h3>
+                        <div class="item-detail">
+                            <img src="path-to-your-game-image/game1.png" alt="N64 Controller">
+                            <div class="condition-badge mint">Mint</div>
+                        </div>
+                    </div>
+                    <div class="requested-items-detail">
+                        <h3>Requested Items:</h3>
+                        <div class="item-detail">
+                            <img src="path-to-your-game-image/game2.png" alt="Banjo-kazooie">
+                            <div class="condition-badge near-mint">Near Mint</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trade-note">
+                    <label for="tradeNote">Note to Trader (optional):</label>
+                    <textarea id="tradeNote" rows="3"></textarea>
+                </div>
+                <div class="trade-actions">
+                    <button class="cancel-trade-btn">Cancel Trade</button>
+                    <button class="confirm-trade-btn">Confirm Trade</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trade Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-content">
+            <div class="success-message">
+                <h2>Thank You!</h2>
+                <p>Your trade was successful!!</p>
+                <p>Hope you enjoy your item!</p>
+                <button class="back-to-home-btn">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS\tradeCenter.js"></script>
+</body>
+</html>
