@@ -827,3 +827,598 @@ body {
         flex-direction: column;
     }
 }
+
+/* Trade Center */
+
+.trade-center-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.trade-center-header {
+    margin-bottom: 2rem;
+}
+
+.trade-center-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--secondary);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+}
+
+.tab-content {
+    display: none;
+    padding: 2rem 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Trade Offers Grid */
+.trade-offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.trade-offer-card {
+    background: var(--dark);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.trade-offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.trader-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.trader-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary);
+}
+
+.trader-name {
+    color: var(--secondary);
+}
+
+.trade-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.requested-item,
+.offered-item {
+    text-align: center;
+}
+
+.requested-item h3,
+.offered-item h3 {
+    color: var(--primary);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.trade-items img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.view-trade-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-trade-btn:hover {
+    background: var(--light);
+}
+
+/* Trade Proposal Styles */
+.trade-proposal-container {
+    background: var(--dark);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.trade-selection {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.item-selection-grid,
+.traders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.trader-card {
+    background: var(--background);
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.trader-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.trader-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.trader-card span {
+    color: var(--secondary);
+    font-size: 0.8rem;
+}
+
+.next-step-btn {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-step-btn:hover {
+    background: var(--light);
+}
+
+/* Trade Details Modal Styles */
+.trade-details-content {
+    max-width: 600px;
+}
+
+.trade-items-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.item-detail {
+    position: relative;
+}
+
+.item-detail img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.condition-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.trade-note {
+    margin-bottom: 2rem;
+}
+
+.trade-note textarea {
+    width: 100%;
+    background: var(--background);
+    border: 2px solid var(--secondary);
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.trade-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.cancel-trade-btn,
+.confirm-trade-btn {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-trade-btn {
+    background: var(--background);
+    color: white;
+}
+
+.confirm-trade-btn {
+    background: var(--primary);
+    color: white;
+}
+
+/* Success Modal Styles */
+.success-content {
+    max-width: 400px;
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-message h2 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.back-to-home-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+.back-to-home-btn:hover {
+    background: var(--light);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trade-selection {
+        grid-template-columns: 1fr;
+    }
+
+    .trade-items-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .trade-actions {
+        flex-direction: column;
+    }
+}
+
+/* leaderboard.css */
+:root {
+    --primary: #FF71CE;
+    --secondary: #01CDFE;
+    --accent: #05FFA1;
+    --dark: #2D1B69;
+    --light: #B967FF;
+    --background: #1B1B3A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: linear-gradient(135deg, var(--dark), var(--background));
+    color: white;
+    min-height: 100vh;
+}
+
+.leaderboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.leaderboard-header {
+    background: var(--dark);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.leaderboard-title {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tab-button {
+    background: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.leaderboard-table th {
+    background: var(--dark);
+    color: var(--secondary);
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--primary);
+}
+
+.leaderboard-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--secondary);
+}
+
+.rank {
+    color: var(--accent);
+    font-weight: bold;
+    width: 80px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.player-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary);
+}
+
+.score {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .tab-navigation {
+        flex-direction: column;
+    }
+
+    .tab-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .leaderboard-table th:nth-child(3),
+    .leaderboard-table td:nth-child(3) {
+        display: none;
+    }
+}
+
+/* Contact Page Styles */
+.contact-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.contact-header {
+    background: var(--dark);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contact-title {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-subtitle {
+    color: var(--secondary);
+    font-size: 0.8rem;
+}
+
+.contact-form-container {
+    background: var(--dark);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: var(--background);
+    border: 2px solid var(--secondary);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 113, 206, 0.2);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: var(--light);
+    transform: translateY(-2px);
+}
+
+.contact-info-section {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1rem;
+    background: var(--dark);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+}
+
+.contact-info-title {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+
+.contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+
+.message-status {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    display: none;
+}
+
+.success-message {
+    background: rgba(5, 255, 161, 0.1);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+.error-message {
+    background: rgba(255, 113, 206, 0.1);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+/* Animation for messages */
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.message-status.show {
+    display: block;
+    animation: slideDown 0.3s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        margin: 1rem auto;
+    }
+
+    .contact-form-container {
+        padding: 1rem;
+    }
+
+    .contact-details {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
