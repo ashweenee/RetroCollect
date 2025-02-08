@@ -117,3 +117,117 @@ viewDetailsButtons.forEach(button => {
         alert(`Viewing ${consoleName} collection details - Coming soon!`);
     });
 });
+
+// Collection details modal functionality
+function createCollectionDetailsModal() {
+    const modal = document.createElement('div');
+    modal.className = 'collection-details-modal modal';
+    modal.innerHTML = `
+        <div class="modal-content collection-details-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <div class="collection-items-grid"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    return modal;
+}
+
+// Sample collection data - In production, this would come from your backend
+const collectionData = {
+    'PlayStation 1': [
+        {
+            name: 'Crash Bandicoot',
+            image: '/api/placeholder/200/200',
+            condition: 'Mint',
+            rarity: 5,
+            details: 'Original 1996 release'
+        }
+        // Add more items as needed
+    ],
+    'Nintendo 64': [
+        {
+            name: 'Super Mario 64',
+            image: '/api/placeholder/200/200',
+            condition: 'Near Mint',
+            rarity: 4,
+            details: 'Launch title'
+        }
+        // Add more items as needed
+    ],
+    'SEGA Genesis': [
+        {
+            name: 'Sonic the Hedgehog',
+            image: '/api/placeholder/200/200',
+            condition: 'Good',
+            rarity: 3,
+            details: 'Original cartridge'
+        }
+        // Add more items as needed
+    ]
+};
+
+// Create rarity stars HTML
+function createRarityStars(rating) {
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+}
+
+// Initialize collection details functionality
+function initializeCollectionDetails() {
+    const modal = createCollectionDetailsModal();
+    const closeButton = modal.querySelector('.close-button');
+    
+    // Add click handlers to all "View Details" buttons
+    document.querySelectorAll('.view-details').forEach(button => {
+        button.addEventListener('click', () => {
+            const consoleName = button.parentElement.querySelector('h3').textContent;
+            displayCollectionDetails(consoleName, modal);
+        });
+    });
+
+    // Close modal when clicking the close button
+    closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+}
+
+// Display collection details in modal
+function displayCollectionDetails(consoleName, modal) {
+    const items = collectionData[consoleName] || [];
+    const modalTitle = modal.querySelector('#modalTitle');
+    const itemsGrid = modal.querySelector('.collection-items-grid');
+    
+    modalTitle.textContent = `${consoleName} Collection`;
+    itemsGrid.innerHTML = '';
+
+    items.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'collection-detail-item';
+        itemElement.innerHTML = `
+            <div class="item-image">
+                <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="item-details">
+                <h3>${item.name}</h3>
+                <div class="condition-badge ${item.condition.toLowerCase()}">${item.condition}</div>
+                <div class="rarity-stars">${createRarityStars(item.rarity)}</div>
+                <p>${item.details}</p>
+            </div>
+        `;
+        itemsGrid.appendChild(itemElement);
+    });
+
+    modal.style.display = 'block';
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCollectionDetails();
+})
