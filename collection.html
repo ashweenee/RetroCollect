@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroCollect - My Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">RetroCollect</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="collection.html" class="active">Collection</a>
+            <a href="#">Trade Center</a>
+            <a href="#">Achievements</a>
+            <a href="#">Leaderboard</a>
+            <button id="loginBtn" class="nav-button">Login</button>
+        </div>
+    </nav>
+
+    <!-- Login Modal (same as other pages) -->
+    <div id="loginModal" class="modal" role="dialog" aria-labelledby="loginModalTitle">
+        <!-- Same login modal content as other pages -->
+    </div>
+
+    <div class="marketplace-container">
+        <h1>My Collection</h1>
+        
+        <!-- Collection Stats -->
+        <div class="collection-stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalItems">0</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="collectionScore">0</div>
+                <div class="stat-label">Collection Score</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="completedSets">0</div>
+                <div class="stat-label">Completed Sets</div>
+            </div>
+        </div>
+
+        <!-- Console Collections -->
+        <h2>Console Collections</h2>
+        <div class="console-collections">
+            <div class="console-card">
+                <h3>PlayStation 1</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <p>12/20 Items (60% Complete)</p>
+                <button class="view-details">View Details</button>
+            </div>
+
+            <div class="console-card">
+                <h3>Nintendo 64</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                </div>
+                <p>14/15 Items (90% Complete)</p>
+                <button class="view-details">View Details</button>
+            </div>
+
+            <div class="console-card">
+                <h3>SEGA Genesis</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%"></div>
+                </div>
+                <p>5/18 Items (30% Complete)</p>
+                <button class="view-details">View Details</button>
+            </div>
+        </div>
+
+        <!-- Collection Items -->
+        <h2>Recent Additions</h2>
+        <div id="collectionGrid" class="collection-grid">
+            <!-- Collection items will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Achievement Notification -->
+    <div id="achievementNotification" class="achievement-notification" role="alert">
+        <h3>Achievement Unlocked!</h3>
+        <p id="achievementText"></p>
+    </div>
+
+    <!-- Error Notification Container -->
+    <div id="errorNotification" class="error-notification" aria-live="polite"></div>
+
+    <script src="collection.js"></script>
+</body>
+</html>
