@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'PlayStation 1',
             items: [
                 {
-                    name: 'Super Mario Bros',
+                    name: 'Olympic Summer Games',
                     condition: 'Mint',
                     rarity: 'Legendary',
-                    image: '/api/placeholder/200/200'
+                    image: 'media\\olympicsummergames.png'
                 }
             ]
         },
@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                     name: 'Super Mario 64',
                     condition: 'Mint',
-                    rarity: 'Legendary',
-                    image: '/api/placeholder/200/200'
+                    rarity: 'Common',
+                    image: 'media\\MK64.png'
                 }
             ]
         },
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: 'Sonic the Hedgehog 2',
                     condition: 'Mint',
                     rarity: 'Rare',
-                    image: '/api/placeholder/200/200'
+                    image: 'media\\Sonic_the_Hedgehog.png'
                 }
             ]
         }
