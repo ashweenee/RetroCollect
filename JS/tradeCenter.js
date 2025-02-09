@@ -1,54 +1,48 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Cache DOM elements using object destructuring
-    const {
-        tradeModal,
-        successModal
-    } = {
-        tradeModal: document.getElementById('tradeModal'),
-        successModal: document.getElementById('successModal')
+document.addEventListener('DOMContentLoaded', () => {
+    const modals = {
+        trade: document.getElementById('tradeModal'),
+        success: document.getElementById('successModal')
     };
 
-    // Helper function to toggle modal display
     const toggleModal = (modal, show) => modal.style.display = show ? 'block' : 'none';
 
-    // Tab switching
-    document.querySelectorAll('.tab-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => el.classList.remove('active'));
-            button.classList.add('active');
-            document.getElementById(button.dataset.tab).classList.add('active');
+    // switch tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            ['tab-btn', 'tab-content'].forEach(cls =>
+                document.querySelectorAll(`.${cls}`).forEach(el => el.classList.remove('active')));
+            btn.classList.add('active');
+            document.getElementById(btn.dataset.tab).classList.add('active');
         });
     });
 
-    // Trade modal controls
-    document.querySelectorAll('.view-trade-btn').forEach(btn => 
-        btn.addEventListener('click', () => toggleModal(tradeModal, true)));
+    // Modal controls
+    document.querySelectorAll('.view-trade-btn').forEach(btn =>
+        btn.addEventListener('click', () => toggleModal(modals.trade, true)));
 
-    document.querySelector('.close-button').addEventListener('click', () => 
-        toggleModal(tradeModal, false));
+    document.querySelector('.close-button').addEventListener('click', () =>
+        toggleModal(modals.trade, false));
 
-    // Modal background click handlers
-    [tradeModal, successModal].forEach(modal => {
-        modal.addEventListener('click', (e) => {
+    Object.values(modals).forEach(modal =>
+        modal.addEventListener('click', e => {
             if (e.target === modal) toggleModal(modal, false);
-        });
-    });
+        }));
 
-    // Trade confirmation flow
+    // trade confirm/cancel
     document.querySelector('.confirm-trade-btn').addEventListener('click', () => {
-        toggleModal(tradeModal, false);
-        toggleModal(successModal, true);
+        toggleModal(modals.trade, false);
+        toggleModal(modals.success, true);
     });
 
-    document.querySelector('.cancel-trade-btn').addEventListener('click', () => 
-        toggleModal(tradeModal, false));
+    document.querySelector('.cancel-trade-btn').addEventListener('click', () =>
+        toggleModal(modals.trade, false));
 
     document.querySelector('.back-to-home-btn').addEventListener('click', () => {
-        toggleModal(successModal, false);
+        toggleModal(modals.success, false);
         window.location.href = 'homepage.html';
     });
 
-    // Trader card selection
+    // select trader
     document.querySelectorAll('.trader-card').forEach(card => {
         card.addEventListener('click', () => {
             document.querySelectorAll('.trader-card').forEach(c => c.classList.remove('selected'));
@@ -56,51 +50,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Next step validation
     document.querySelector('.next-step-btn').addEventListener('click', () => {
         if (!document.querySelector('.trader-card.selected')) {
             alert('Please select a trader first!');
             return;
         }
-        toggleModal(tradeModal, true);
+        toggleModal(modals.trade, true);
     });
 
-    // Populate item grid
-    const populateItemGrid = () => {
-        const items = [
-            { id: 1, name: 'PS1 Controller', image: 'media\\PSController.png', condition: 'Mint' },
-            { id: 2, name: 'N64 Controller', image: 'media\\N64Controller.png', condition: 'Near Mint' }
-        ];
+    // Item grid population
+    const items = [
+        { id: 1, name: 'PS1 Controller', image: 'media\\PSController.png', condition: 'Mint' },
+        { id: 2, name: 'N64 Controller', image: 'media\\N64Controller.png', condition: 'Near Mint' }
+    ];
 
-        const itemGrid = document.querySelector('.item-selection-grid');
-        items.forEach(({ image, name, condition }) => {
-            const itemCard = document.createElement('div');
-            itemCard.className = 'item-card';
-            itemCard.innerHTML = `
-                <img src="${image}" alt="${name}">
-                <h3>${name}</h3>
-                <div class="condition-badge ${condition.toLowerCase()}">${condition}</div>
-            `;
-            itemCard.addEventListener('click', () => itemCard.classList.toggle('selected'));
-            itemGrid.appendChild(itemCard);
-        });
-    };
-
-    populateItemGrid();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Tab switching functionality
-    document.querySelectorAll('.tab-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => 
-                el.classList.remove('active'));
-            button.classList.add('active');
-            document.getElementById(button.dataset.tab).classList.add('active');
-        });
+    const itemGrid = document.querySelector('.item-selection-grid');
+    items.forEach(({ image, name, condition }) => {
+        const card = document.createElement('div');
+        card.className = 'item-card';
+        card.innerHTML = `
+            <img src="${image}" alt="${name}">
+            <h3>${name}</h3>
+            <div class="condition-badge ${condition.toLowerCase()}">${condition}</div>
+        `;
+        card.addEventListener('click', () => card.classList.toggle('selected'));
+        itemGrid.appendChild(card);
     });
 
-    // Calculator functionality
+    // Calculator 
     const display = document.querySelector('.calculator-display');
     let currentValue = '0';
     let previousValue = null;
@@ -113,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const prev = parseFloat(previousValue);
         const curr = parseFloat(currentValue);
         let result = 0;
-        
-        switch(operator) {
+
+        switch (operator) {
             case '+': result = prev + curr; break;
             case '-': result = prev - curr; break;
             case '×': result = prev * curr; break;

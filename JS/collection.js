@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function showCollectionDetails(consoleId) {
         const collection = collections[consoleId];
         modalTitle.textContent = collection.name;
-        
+
         // Clear previous items
         collectionItems.innerHTML = '';
-        
+
         // Add collection items
         collection.items.forEach(item => {
             const itemElement = document.createElement('div');

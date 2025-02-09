@@ -1,43 +1,39 @@
-// DOM Elements
-const loginBtn = document.getElementById('loginBtn');
-const loginModal = document.getElementById('loginModal');
-const loginForm = document.getElementById('loginForm');
-
-// Login Modal Functions
-loginBtn.addEventListener('click', () => {
-    loginModal.style.display = 'block';
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target === loginModal) {
-        loginModal.style.display = 'none';
-    }
-});
-
-// Login Form Handler
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    
-    if (email && password) {
-        loginModal.style.display = 'none';
-        // Handle successful login here
-    }
-});
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Add hover effect sound or animation if needed
-    const gameGearButtons = document.querySelectorAll('.game-gear-button');
-    
-    gameGearButtons.forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            // Add hover sound or effect here
-        });
-    });
+    const loginBtn = document.getElementById('loginBtn');
+    const loginModal = document.getElementById('loginModal');
+    const loginForm = document.getElementById('loginForm');
 
-    // Show welcome achievement after a delay
-    setTimeout(() => {
-        unlockAchievement('Welcome to RetroCollect!');
-    }, 1000);
+    if (loginModal) {
+        loginModal.style.display = 'none';
+    }
+
+    if (loginBtn) {
+        loginBtn.addEventListener('click', () => {
+            if (loginModal) {
+                loginModal.style.display = 'flex';  
+            }
+        });
+    }
+
+    if (loginModal) {
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+    }
+
+    // Handle form submission
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                console.log('Login attempt with:', { email });
+                loginModal.style.display = 'none';
+            }
+        });
+    }
 });

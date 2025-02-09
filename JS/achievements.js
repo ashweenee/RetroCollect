@@ -3,248 +3,141 @@ const achievements = {
         title: 'Bronze Collector',
         description: 'Collect your first 15 retro games',
         image: 'media\\bronzeBadge.png',
-        progress: {
-            current: 8,
-            total: 15,
-            percentage: 53
-        },
+        progress: { current: 8, total: 15, percentage: 53 },
         collection: 'retro-games'
     },
     'nes-collector': {
         title: 'NES Collector',
         description: 'Complete the NES console collection',
         image: 'media\\NESBadge.png',
-        progress: {
-            current: 8,
-            total: 15,
-            percentage: 53
-        },
+        progress: { current: 8, total: 15, percentage: 53 },
         collection: 'nes-games'
     },
     'sega-sage': {
         title: 'SEGA Sage',
         description: 'Complete the SEGA console collection',
         image: 'media\\SEGABadge.png',
-        progress: {
-            current: 6,
-            total: 10,
-            percentage: 60
-        },
+        progress: { current: 6, total: 10, percentage: 60 },
         collection: 'sega-games'
     },
     'rare-finder': {
         title: 'Rare Finder',
         description: 'Find and collect 5 legendary rare games',
-        image: 'media\lockedBadge.png',
-        progress: {
-            current: 0,
-            total: 5,
-            percentage: 0
-        },
+        image: 'media\\lockedBadge.png',
+        progress: { current: 0, total: 5, percentage: 0 },
         locked: true,
         collection: 'rare-games'
     }
 };
 
-// Initialize page functionality
 document.addEventListener('DOMContentLoaded', () => {
-    initializeModals();
-    initializeBadgeButtons();
-    initializeShareButtons();
+    const modals = {
+        badge: document.getElementById('badgeModal'),
+        share: document.getElementById('shareModal')
+    };
+
+    // modals
+    document.querySelectorAll('.close-button').forEach(btn => 
+        btn.addEventListener('click', () => btn.closest('.modal').style.display = 'none'));
+    
+    window.onclick = e => {
+        if (Object.values(modals).includes(e.target)) e.target.style.display = 'none';
+    };
+
+    // badge buttons
+    document.querySelectorAll('.view-badge-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const achievement = achievements[btn.closest('.achievement-card').dataset.badgeId];
+            if (!achievement.locked) displayBadgeDetails(achievement, modals);
+        });
+    });
+
+    // share buttons
+    document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+            const platform = e.target.classList[1];
+            const shareModal = modals.share;
+            const achievement = Object.values(achievements).find(a => 
+                a.title === shareModal.dataset.achievementId);
+            
+            const shareMsg = `I just earned the ${achievement.title} badge on RetroCollect! ${achievement.progress.current}/${achievement.progress.total} complete!`;
+            
+            const shareUrls = {
+                telegram: `https://t.me/share/url?url=retrocollect.com&text=${encodeURIComponent(shareMsg)}`,
+                tiktok: null,
+                instagram: null
+            };
+
+            if (shareUrls[platform]) window.open(shareUrls[platform]);
+            else alert(`Share to ${platform} functionality coming soon!`);
+            
+            shareModal.style.display = 'none';
+        });
+    });
+
     updateOverallProgress();
 });
 
-// Modal functionality
-function initializeModals() {
-    const badgeModal = document.getElementById('badgeModal');
-    const shareModal = document.getElementById('shareModal');
-    const closeButtons = document.querySelectorAll('.close-button');
-
-    // Close modal functionality
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            button.closest('.modal').style.display = 'none';
-        });
-    });
-
-    // Close modals when clicking outside
-    window.addEventListener('click', (event) => {
-        if (event.target === badgeModal) {
-            badgeModal.style.display = 'none';
+function displayBadgeDetails(achievement, modals) {
+    const modal = modals.badge;
+    const elements = {
+        image: modal.querySelector('#modalBadgeImage'),
+        title: modal.querySelector('#modalBadgeTitle'),
+        description: modal.querySelector('#modalBadgeDescription'),
+        progress: {
+            percentage: modal.querySelector('.progress-percentage'),
+            fill: modal.querySelector('.progress-fill'),
+            detail: modal.querySelector('.progress-detail')
         }
-        if (event.target === shareModal) {
-            shareModal.style.display = 'none';
-        }
-    });
-}
+    };
 
-// Badge button functionality
-function initializeBadgeButtons() {
-    const viewBadgeButtons = document.querySelectorAll('.view-badge-btn');
-    
-    viewBadgeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const badgeId = button.closest('.achievement-card').dataset.badgeId;
-            const achievement = achievements[badgeId];
-            
-            if (!achievement.locked) {
-                displayBadgeDetails(achievement);
-            }
-        });
-    });
-}
+    // reset modal content
+    elements.image.src = achievement.image;
+    elements.title.textContent = achievement.title;
+    elements.description.textContent = achievement.description;
+    elements.progress.percentage.textContent = `${achievement.progress.percentage}% Complete`;
+    elements.progress.fill.style.width = `${achievement.progress.percentage}%`;
+    elements.progress.detail.textContent = `${achievement.progress.current}/${achievement.progress.total} ${achievement.title} Complete`;
 
-// Display badge details in modal
-function displayBadgeDetails(achievement) {
-    const modal = document.getElementById('badgeModal');
-    const modalImage = document.getElementById('modalBadgeImage');
-    const modalTitle = document.getElementById('modalBadgeTitle');
-    const modalDescription = document.getElementById('modalBadgeDescription');
+    modal.querySelector('.view-collection').onclick = () => 
+        window.location.href = `collection.html?filter=${achievement.collection}`;
     
-    modalImage.src = achievement.image;
-    modalTitle.textContent = achievement.title;
-    modalDescription.textContent = achievement.description;
-    
-    // Update progress elements
-    const progressPercentage = modal.querySelector('.progress-percentage');
-    const progressFill = modal.querySelector('.progress-fill');
-    const progressDetail = modal.querySelector('.progress-detail');
-    
-    progressPercentage.textContent = `${achievement.progress.percentage}% Complete`;
-    progressFill.style.width = `${achievement.progress.percentage}%`;
-    progressDetail.textContent = `${achievement.progress.current}/${achievement.progress.total} ${achievement.title} Complete`;
-    
-    // Set up action buttons
-    initializeActionButtons(achievement);
-    
+    modal.querySelector('.share-badge').onclick = () => {
+        modals.share.dataset.achievementId = achievement.title;
+        modal.style.display = 'none';
+        modals.share.style.display = 'block';
+    };
+
     modal.style.display = 'block';
 }
 
-// Initialize action buttons in badge details modal
-function initializeActionButtons(achievement) {
-    const viewCollectionBtn = document.querySelector('.view-collection');
-    const shareBadgeBtn = document.querySelector('.share-badge');
-    
-    viewCollectionBtn.onclick = () => {
-        window.location.href = `collection.html?filter=${achievement.collection}`;
-    };
-    
-    shareBadgeBtn.onclick = () => {
-        openShareModal(achievement);
-    };
-}
-
-// Share functionality
-function initializeShareButtons() {
-    const shareButtons = document.querySelectorAll('.share-btn');
-    
-    shareButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const platform = e.target.classList[1]; // telegram, tiktok, or instagram
-            shareAchievement(platform);
-        });
-    });
-}
-
-// Open share modal
-function openShareModal(achievement) {
-    const shareModal = document.getElementById('shareModal');
-    const badgeModal = document.getElementById('badgeModal');
-    
-    // Store achievement data for sharing
-    shareModal.dataset.achievementId = achievement.title;
-    
-    // Hide badge modal and show share modal
-    badgeModal.style.display = 'none';
-    shareModal.style.display = 'block';
-}
-
-// Share achievement to platform
-function shareAchievement(platform) {
-    const shareModal = document.getElementById('shareModal');
-    const achievementTitle = shareModal.dataset.achievementId;
-    const achievement = Object.values(achievements).find(a => a.title === achievementTitle);
-    
-    // Create share message
-    const shareMessage = `I just earned the ${achievement.title} badge on RetroCollect! ${achievement.progress.current}/${achievement.progress.total} complete!`;
-    
-    // Platform-specific sharing logic
-    switch(platform) {
-        case 'telegram':
-            // Implement Telegram sharing
-            window.open(`https://t.me/share/url?url=retrocollect.com&text=${encodeURIComponent(shareMessage)}`);
-            break;
-        case 'tiktok':
-            // Implement TikTok sharing
-            alert('Share to TikTok functionality coming soon!');
-            break;
-        case 'instagram':
-            // Implement Instagram sharing
-            alert('Share to Instagram functionality coming soon!');
-            break;
-    }
-    
-    // Close share modal
-    shareModal.style.display = 'none';
-}
-
-// Update overall progress
-function updateOverallProgress() {
-    const progressCount = document.querySelector('.progress-count');
-    if (progressCount) {
-        let completed = Object.values(achievements).filter(a => 
-            !a.locked && a.progress.current === a.progress.total
-        ).length;
-        let total = Object.keys(achievements).length;
-        progressCount.textContent = `${completed}/${total}`;
-    }
-}
-
-// Animation for achievement unlocking
-function animateAchievementUnlock(achievementId) {
-    const card = document.querySelector(`[data-badge-id="${achievementId}"]`);
-    if (card) {
-        card.classList.add('achievement-unlocked');
-        
-        // Add animation class
-        card.style.animation = 'unlockAnimation 1s ease-out';
-        
-        // Remove animation class after it completes
-        setTimeout(() => {
-            card.style.animation = '';
-        }, 1000);
-    }
-}
-
-// Update achievement progress
+// update overall progress count
 function updateAchievementProgress(achievementId, newProgress) {
     const achievement = achievements[achievementId];
-    if (achievement) {
-        achievement.progress.current = newProgress;
-        achievement.progress.percentage = Math.round((newProgress / achievement.progress.total) * 100);
-        
-        // Update UI
-        const card = document.querySelector(`[data-badge-id="${achievementId}"]`);
-        if (card) {
-            const progressBar = card.querySelector('.progress-fill');
-            const progressText = card.querySelector('.achievement-info p');
-            
-            progressBar.style.width = `${achievement.progress.percentage}%`;
-            progressText.textContent = `${achievement.progress.current}/${achievement.progress.total} Collected`;
-            
-            // Check if achievement is completed
-            if (achievement.progress.current === achievement.progress.total) {
-                animateAchievementUnlock(achievementId);
-            }
+    if (!achievement) return;
+
+    achievement.progress.current = newProgress;
+    achievement.progress.percentage = Math.round((newProgress / achievement.progress.total) * 100);
+
+    const card = document.querySelector(`[data-badge-id="${achievementId}"]`);
+    if (card) {
+        card.querySelector('.progress-fill').style.width = `${achievement.progress.percentage}%`;
+        card.querySelector('.achievement-info p').textContent = 
+            `${achievement.progress.current}/${achievement.progress.total} Collected`;
+
+        if (achievement.progress.current === achievement.progress.total) {
+            card.classList.add('achievement-unlocked');
+            card.style.animation = 'unlockAnimation 1s ease-out';
+            setTimeout(() => card.style.animation = '', 1000);
         }
-        
-        // Update overall progress
-        updateOverallProgress();
+    }
+
+    const progressCount = document.querySelector('.progress-count');
+    if (progressCount) {
+        const completed = Object.values(achievements).filter(a => 
+            !a.locked && a.progress.current === a.progress.total).length;
+        progressCount.textContent = `${completed}/${Object.keys(achievements).length}`;
     }
 }
 
-// Export functions for use in other parts of the application
-window.RetroCollect = {
-    updateAchievementProgress,
-    achievements
-};
+window.RetroCollect = { updateAchievementProgress, achievements };
