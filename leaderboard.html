@@ -26,20 +26,25 @@
         </div>
     </nav>
 
-    <div class="leaderboard-container">
-        <div class="leaderboard-header">
-            <h1 class="leaderboard-title">LEADERBOARD</h1>
-            <div class="tab-navigation">
+    <div class="leaderboard-header">
+        <h1 class="leaderboard-title">LEADERBOARD</h1>
+        <div class="tab-navigation">
+            <div class="tab-group">
                 <input type="radio" name="leaderboard-tab" id="global" class="tab-input" checked>
                 <label for="global" class="tab-label">Global</label>
-
+            </div>
+            
+            <div class="tab-group">
                 <input type="radio" name="leaderboard-tab" id="friends" class="tab-input">
                 <label for="friends" class="tab-label">Friends</label>
-
+            </div>
+            
+            <div class="tab-group">
                 <input type="radio" name="leaderboard-tab" id="local" class="tab-input">
                 <label for="local" class="tab-label">Local</label>
             </div>
         </div>
+    </div>
 
         <div id="global-content" class="leaderboard-content">
             <table class="leaderboard-table">
@@ -158,7 +163,6 @@
                 </tbody>
             </table>
         </div>
-
         <div id="local-content" class="leaderboard-content">
             <table class="leaderboard-table">
                 <thead>
@@ -207,6 +211,6 @@
             </table>
         </div>
     </div>
+    <script src="JS\leaderboard.js"></script>
 </body>
-
 </html>
