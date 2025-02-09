@@ -1431,6 +1431,61 @@ input[type="text"] {
     color: white;
 }
 
+/* Calculator Styles */
+.calculator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--dark);
+    border-radius: 8px;
+    padding: 1rem;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.calculator-display {
+    background: var(--background);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    text-align: right;
+    font-size: 1.5rem;
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.calculator-btn {
+    background: var(--light);
+    border: none;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    transition: all 0.3s ease;
+}
+
+.calculator-btn:hover {
+    background: var(--primary);
+}
+
+.calculator-btn.operator {
+    background: var(--primary);
+}
+
+.calculator-btn.equals {
+    grid-column: span 2;
+    background: #48BB78;
+}
+
+.calculator-btn.clear {
+    background: #F56565;
+}
+
 /* Success Modal Styles */
 .success-content {
     max-width: 400px;

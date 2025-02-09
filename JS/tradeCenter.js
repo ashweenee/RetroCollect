@@ -88,3 +88,79 @@ document.addEventListener('DOMContentLoaded', function() {
 
     populateItemGrid();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab switching functionality
+    document.querySelectorAll('.tab-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn, .tab-content').forEach(el => 
+                el.classList.remove('active'));
+            button.classList.add('active');
+            document.getElementById(button.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Calculator functionality
+    const display = document.querySelector('.calculator-display');
+    let currentValue = '0';
+    let previousValue = null;
+    let operator = null;
+    let newNumber = true;
+
+    const updateDisplay = () => display.textContent = currentValue;
+
+    const calculate = () => {
+        const prev = parseFloat(previousValue);
+        const curr = parseFloat(currentValue);
+        let result = 0;
+        
+        switch(operator) {
+            case '+': result = prev + curr; break;
+            case '-': result = prev - curr; break;
+            case '×': result = prev * curr; break;
+            case '÷': result = prev / curr; break;
+            default: return curr;
+        }
+        return Math.round(result * 100) / 100;
+    };
+
+    document.querySelectorAll('.calculator-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const value = button.textContent;
+
+            if (value >= '0' && value <= '9' || value === '.') {
+                if (newNumber) {
+                    currentValue = value === '.' ? '0.' : value;
+                    newNumber = false;
+                } else {
+                    if (value === '.' && currentValue.includes('.')) return;
+                    currentValue += value;
+                }
+                updateDisplay();
+            } else if (['+', '-', '×', '÷'].includes(value)) {
+                if (previousValue === null) {
+                    previousValue = currentValue;
+                } else if (!newNumber) {
+                    previousValue = calculate().toString();
+                }
+                operator = value;
+                newNumber = true;
+                updateDisplay();
+            } else if (value === '=') {
+                if (operator && !newNumber) {
+                    currentValue = calculate().toString();
+                    previousValue = null;
+                    operator = null;
+                    newNumber = true;
+                    updateDisplay();
+                }
+            } else if (value === 'C') {
+                currentValue = '0';
+                previousValue = null;
+                operator = null;
+                newNumber = true;
+                updateDisplay();
+            }
+        });
+    });
+});
