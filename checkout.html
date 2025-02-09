@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroCollect - Cart & Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <img src="media\RetroCollect_logo.png" alt="RetroCollect Logo" class="nav-logo">
+        </div>
+        <div class="nav-links">
+            <a href="homepage.html">Home</a>
+            <a href="marketplace.html">Marketplace</a>
+            <a href="collection.html">Collection</a>
+            <a href="tradeCenter.html">Trade Center</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="contactUs.html">Contact Us</a>
+            <button id="loginBtn" class="nav-button">Login</button>
+        </div>
+    </nav>
+
+    <div class="cart-checkout-container">
+        <section class="cart-section">
+            <h2>My Cart</h2>
+            <div id="cartItems" class="cart-items">
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartSubtotal">$50</span>
+            </div>
+        </section>
+
+        <section class="checkout-section">
+            <h2>Checkout</h2>
+            <div class="checkout-block">
+                <h3>Delivery Address</h3>
+                <button id="addAddressBtn" class="add-button">Add delivery address</button>
+                <div id="addressForm" class="form-content" style="display: none;">
+                    <input type="text" placeholder="Address Line 1" required>
+                    <input type="text" placeholder="Address Line 2">
+                    <input type="text" placeholder="Postal Code" required>
+                    <div class="form-buttons">
+                        <button class="save-button">Save</button>
+                        <button class="edit-button">Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-block">
+                <h3>Delivery Method</h3>
+                <div class="delivery-options">
+                    <label class="delivery-option">
+                        <input type="radio" name="delivery" value="standard" checked>
+                        <div class="option-details">
+                            <span class="option-title">Standard $10</span>
+                            <span class="option-description">Get by latest possible date</span>
+                        </div>
+                    </label>
+                    <label class="delivery-option">
+                        <input type="radio" name="delivery" value="express">
+                        <div class="option-details">
+                            <span class="option-title">Express $50</span>
+                            <span class="option-description">Get by quickest possible date</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="checkout-block">
+                <h3>Payment</h3>
+                <div class="payment-form">
+                    <input type="text" placeholder="Card Number" required>
+                    <input type="text" placeholder="Name on Card" required>
+                    <div class="card-details">
+                        <input type="text" placeholder="MM/YY" required>
+                        <input type="text" placeholder="CVV" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-block order-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="summarySubtotal">$50</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery Fee:</span>
+                    <span id="deliveryFee">$10</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="orderTotal">$60</span>
+                </div>
+                <button id="placeOrderBtn" class="place-order-button">Place Order</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div id="lottieContainer" style="width: 200px; height: 200px; margin: 0 auto;"></div>
+            <h2>Thank You!</h2>
+            <p>Your payment was successful!!</p>
+            <p>Hope you enjoy your item!</p>
+            <button onclick="window.location.href='homepage.html'" class="back-home-button">Back to Home</button>
+        </div>
+    </div>
+
+    <script src="JS\checkout.js"></script>
+</body>
+
+</html>
