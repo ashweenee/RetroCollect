@@ -868,6 +868,35 @@ input[type="text"] {
     background-color: #ff8dc7;
 }
 
+.rarity-container {
+    margin-top: 10px;
+}
+
+.rarity-stars {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.star {
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.star.filled {
+    color: #FFD700; 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.star.empty {
+    color: #4a4a4a; 
+}
+
+.rarity-container p {
+    margin: 0;
+    color: #fff;
+}
+
 .modal {
     display: none;
     position: fixed;
