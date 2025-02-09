@@ -1,9 +1,8 @@
-
 const achievements = {
     'bronze-collector': {
         title: 'Bronze Collector',
         description: 'Collect your first 15 retro games',
-        image: 'path-to-your-badge-image/bronze-collector.png',
+        image: 'media\\bronzeBadge.png',
         progress: {
             current: 8,
             total: 15,
@@ -14,7 +13,7 @@ const achievements = {
     'nes-collector': {
         title: 'NES Collector',
         description: 'Complete the NES console collection',
-        image: 'path-to-your-badge-image/nes-collector.png',
+        image: 'media\\NESBadge.png',
         progress: {
             current: 8,
             total: 15,
@@ -25,7 +24,7 @@ const achievements = {
     'sega-sage': {
         title: 'SEGA Sage',
         description: 'Complete the SEGA console collection',
-        image: 'path-to-your-badge-image/sega-sage.png',
+        image: 'media\\SEGABadge.png',
         progress: {
             current: 6,
             total: 10,
@@ -36,7 +35,7 @@ const achievements = {
     'rare-finder': {
         title: 'Rare Finder',
         description: 'Find and collect 5 legendary rare games',
-        image: 'path-to-your-badge-image/rare-finder.png',
+        image: 'media\lockedBadge.png',
         progress: {
             current: 0,
             total: 5,
