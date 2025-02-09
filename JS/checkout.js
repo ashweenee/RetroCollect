@@ -42,7 +42,7 @@ function updateTotals() {
 }
 
 function setupEventListeners() {
-    // Quantity buttons
+    // qty buttons
     document.getElementById('cartItems').addEventListener('click', (e) => {
         if (e.target.classList.contains('quantity-button')) {
             const itemId = e.target.closest('.cart-item').dataset.id;
@@ -85,7 +85,7 @@ function updateQuantity(itemId, change) {
 function placeOrder(e) {
     e.preventDefault();
     
-    // Basic form validation
+    // form validation
     const required = document.querySelectorAll('input[required]');
     const isValid = Array.from(required).every(input => input.value.trim() !== '');
     
@@ -109,7 +109,7 @@ function placeOrder(e) {
 function placeOrder(e) {
     e.preventDefault();
     
-    // Basic form validation
+    // form validation
     const required = document.querySelectorAll('input[required]');
     const isValid = Array.from(required).every(input => input.value.trim() !== '');
     
@@ -127,9 +127,8 @@ function placeOrder(e) {
             path: 'media\\Animation - 1739088374387.json' 
         });
 
-        // Listen for animation completion
+        // animation completion
         animation.addEventListener('complete', () => {
-            // Optional: You can add additional actions after animation completes
             console.log('Animation completed');
         });
         
