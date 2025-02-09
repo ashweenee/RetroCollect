@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RetroCollect - Leaderboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="nav-brand">
@@ -23,29 +25,188 @@
             <button id="loginBtn" class="nav-button">Login</button>
         </div>
     </nav>
+
     <div class="leaderboard-container">
         <div class="leaderboard-header">
             <h1 class="leaderboard-title">LEADERBOARD</h1>
             <div class="tab-navigation">
-                <button class="tab-button active" onclick="switchTab('global')">Global</button>
-                <button class="tab-button" onclick="switchTab('friends')">Friends</button>
-                <button class="tab-button" onclick="switchTab('local')">Local</button>
+                <input type="radio" name="leaderboard-tab" id="global" class="tab-input" checked>
+                <label for="global" class="tab-label">Global</label>
+
+                <input type="radio" name="leaderboard-tab" id="friends" class="tab-input">
+                <label for="friends" class="tab-label">Friends</label>
+
+                <input type="radio" name="leaderboard-tab" id="local" class="tab-input">
+                <label for="local" class="tab-label">Local</label>
             </div>
         </div>
 
-        <table class="leaderboard-table">
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>Collection</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody id="leaderboard-body">
-            </tbody>
-        </table>
+        <div id="global-content" class="leaderboard-content">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Collection</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank">#1</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="RetroKing" class="player-avatar">
+                                <span>RetroKing</span>
+                            </div>
+                        </td>
+                        <td>Complete NES</td>
+                        <td class="score">150,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#2</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="PixelQueen" class="player-avatar">
+                                <span>PixelQueen</span>
+                            </div>
+                        </td>
+                        <td>SEGA Master</td>
+                        <td class="score">145,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#3</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="GameMaster" class="player-avatar">
+                                <span>GameMaster</span>
+                            </div>
+                        </td>
+                        <td>Nintendo 64</td>
+                        <td class="score">140,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#4</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="RetroHunter" class="player-avatar">
+                                <span>RetroHunter</span>
+                            </div>
+                        </td>
+                        <td>PlayStation</td>
+                        <td class="score">135,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#5</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="8BitHero" class="player-avatar">
+                                <span>8BitHero</span>
+                            </div>
+                        </td>
+                        <td>SNES</td>
+                        <td class="score">130,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="friends-content" class="leaderboard-content">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Collection</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank">#1</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="Player1" class="player-avatar">
+                                <span>Player1</span>
+                            </div>
+                        </td>
+                        <td>Genesis</td>
+                        <td class="score">120,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#2</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="Player2" class="player-avatar">
+                                <span>Player2</span>
+                            </div>
+                        </td>
+                        <td>GameBoy</td>
+                        <td class="score">115,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#3</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="Player3" class="player-avatar">
+                                <span>Player3</span>
+                            </div>
+                        </td>
+                        <td>Nintendo 64</td>
+                        <td class="score">110,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="local-content" class="leaderboard-content">
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Collection</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank">#1</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="LocalPro" class="player-avatar">
+                                <span>LocalPro</span>
+                            </div>
+                        </td>
+                        <td>Dreamcast</td>
+                        <td class="score">100,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#2</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="CityChamp" class="player-avatar">
+                                <span>CityChamp</span>
+                            </div>
+                        </td>
+                        <td>PlayStation</td>
+                        <td class="score">95,000</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">#3</td>
+                        <td>
+                            <div class="player">
+                                <img src="/api/placeholder/40/40" alt="AreaAce" class="player-avatar">
+                                <span>AreaAce</span>
+                            </div>
+                        </td>
+                        <td>SNES</td>
+                        <td class="score">90,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <script src="JS\leaderboard.js"></script>
 </body>
+
 </html>

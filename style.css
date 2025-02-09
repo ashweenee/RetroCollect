@@ -1440,7 +1440,7 @@ input[type="text"] {
     border-radius: 8px;
     padding: 1rem;
     width: 300px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .calculator-display {
@@ -1528,16 +1528,7 @@ input[type="text"] {
     }
 }
 
-/* leaderboard.css */
-:root {
-    --primary: #FF71CE;
-    --secondary: #01CDFE;
-    --accent: #05FFA1;
-    --dark: #2D1B69;
-    --light: #B967FF;
-    --background: #1B1B3A;
-}
-
+/* leaderboard */
 * {
     margin: 0;
     padding: 0;
@@ -1579,7 +1570,12 @@ body {
     margin-bottom: 1rem;
 }
 
-.tab-button {
+/* Hide radio buttons */
+.tab-input {
+    display: none;
+}
+
+.tab-label {
     background: transparent;
     border: 2px solid var(--secondary);
     color: var(--secondary);
@@ -1589,10 +1585,23 @@ body {
     transition: all 0.3s ease;
 }
 
-.tab-button.active {
+/* Style active tab */
+.tab-input:checked+.tab-label {
     background: var(--primary);
     border-color: var(--primary);
     color: white;
+}
+
+/* Hide all leaderboard tables by default */
+.leaderboard-content {
+    display: none;
+}
+
+/* Show selected leaderboard */
+#global:checked~#global-content,
+#friends:checked~#friends-content,
+#local:checked~#local-content {
+    display: block;
 }
 
 .leaderboard-table {
@@ -1642,7 +1651,7 @@ body {
         flex-direction: column;
     }
 
-    .tab-button {
+    .tab-label {
         width: 100%;
         text-align: center;
     }
