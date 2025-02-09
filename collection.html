@@ -26,49 +26,67 @@
         </div>
     </nav>
 
-    <div class="marketplace-container">
-        <h1>My Collection</h1>
+    <div class="collection-container">
+        <h1 class="pixel-title">My Collection</h1>
         
         <!-- Collection Stats -->
-        <div class="collection-stats">
-            <div class="stat-card">
-                <div class="stat-value">31</div>
-                <div class="stat-label">Total Items</div>
+        <div class="stats-grid">
+            <div class="stats-card">
+                <h3>Total items</h3>
+                <div class="stats-value">31</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">100000</div>
-                <div class="stat-label">Collection Score</div>
+            <div class="stats-card">
+                <h3>Total Score</h3>
+                <div class="stats-value">100000</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">0</div>
-                <div class="stat-label">Completed Sets</div>
+            <div class="stats-card">
+                <h3>Completed sets</h3>
+                <div class="stats-value">0</div>
             </div>
         </div>
 
+        <h2 class="section-title">Console Collections</h2>
+        
         <!-- Console Collections -->
-        <h2>Console Collections</h2>
         <div class="console-collections">
-            <div class="console-card" data-progress="60">
+            <div class="console-card">
                 <h3>PlayStation 1</h3>
-                <div class="progress-bar"></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 60%"></div>
+                </div>
                 <p>12/20 Items (60% Complete)</p>
-                <a href="#ps1-details" class="view-details">View Details</a>
+                <button class="view-details" data-console="ps1">View Details</button>
             </div>
 
-            <div class="console-card" data-progress="90">
+            <div class="console-card">
                 <h3>Nintendo 64</h3>
-                <div class="progress-bar"></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 90%"></div>
+                </div>
                 <p>14/15 Items (90% Complete)</p>
-                <a href="#n64-details" class="view-details">View Details</a>
+                <button class="view-details" data-console="n64">View Details</button>
             </div>
 
-            <div class="console-card" data-progress="30">
+            <div class="console-card">
                 <h3>SEGA Genesis</h3>
-                <div class="progress-bar"></div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 30%"></div>
+                </div>
                 <p>5/18 Items (30% Complete)</p>
-                <a href="#sega-details" class="view-details">View Details</a>
+                <button class="view-details" data-console="genesis">View Details</button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="collectionModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <div class="collection-items"></div>
             </div>
         </div>
     </div>
+
+    <script src="JS\collection.js"></script>
 </body>
 </html>

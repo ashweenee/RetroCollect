@@ -3,13 +3,25 @@ const products = [
         id: 1,
         name: 'PS1 Controller',
         price: 20,
-        image: '/api/placeholder/250/200' // Replace with your PS1 controller image path
+        image: 'media\\PSController.png' 
     },
     {
         id: 2,
         name: 'N64 Controller',
         price: 30,
-        image: '/api/placeholder/250/200' // Replace with your N64 controller image path
+        image: 'media\\N64Controller.png' 
+    },
+    {
+        id: 3,
+        name: 'Mario Kart 64',
+        price: 15,
+        image: 'media\\MK64.png' 
+    },
+    {
+        id: 4,
+        name: 'Super Thunder Blade',
+        price: 13,
+        image: 'media\\Superthunderblade.png' 
     }
 ];
 
