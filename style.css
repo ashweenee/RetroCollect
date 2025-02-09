@@ -27,7 +27,7 @@ body {
     min-height: 100vh;
 }
 
-/* Navigation Styles */
+/* Navbar Styles */
 .navbar {
     background: var(--dark);
     padding: 1rem;
@@ -38,48 +38,90 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%; 
+    flex-wrap: wrap; 
 }
 
-.nav-brand {
-    font-size: 1.5rem;
-    color: var(--primary);
-    text-shadow: 0 0 10px var(--primary);
+.nav-logo {
+    height: 120px; 
+    width: auto;
+    max-width: 150px; 
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
 }
 
 .nav-links {
     display: flex;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; 
 }
 
 .nav-links a {
-    color: var(--secondary);
+    display: inline-block;
+    text-align: center;
+    min-width: 140px; 
+    color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    background: var(--primary); 
+    box-shadow: 0 0 15px var(--primary);
+    font-family: 'Press Start 2P', cursive; 
     transition: all 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    background: var(--primary);
-    color: white;
+    background: var(--light); 
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--light);
 }
 
-.nav-button {
+.nav-extra {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.nav-extra a {
+    display: inline-block;
+    min-width: 140px;
+    text-align: center;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
     background: var(--primary);
     color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 15px var(--primary);
+    font-family: 'Press Start 2P', cursive;
     transition: all 0.3s ease;
 }
 
-.nav-button:hover {
+.nav-extra a:hover {
     background: var(--light);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px var(--light);
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .nav-extra {
+        flex-direction: column;
+    }
+}
+
 
 /* Modal Styles */
 .modal {
