@@ -6,7 +6,6 @@
     <title>RetroCollect - Marketplace</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -25,46 +24,9 @@
         </div>
     </nav>
 
-    <div id="loginModal" class="modal" role="dialog" aria-labelledby="loginModalTitle">
-        <div class="login-container">
-            <div class="login-header">
-                <h2>Welcome Back!</h2>
-                <p>Log in to continue your retro gaming journey</p>
-            </div>
-            <form id="loginForm" aria-label="Login Form">
-                <div class="input-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="Enter your email" required aria-label="Email">
-                </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password" required aria-label="Password">
-                </div>
-                <div class="form-extras">
-                    <label class="remember-me">
-                        <input type="checkbox" id="rememberMe">
-                        Remember me
-                    </label>
-                    <a href="#" class="forgot-password">Forgot Password?</a>
-                </div>
-                <button type="submit" class="login-btn">Login</button>
-                <div class="signup-link">
-                    <p>New here? <a href="#" id="signupLink">Create an account</a></p>
-                </div>
-            </form>
-            <div class="login-divider">
-                <span>or</span>
-            </div>
-            <div class="social-login">
-                <button class="social-btn google">Continue with Google</button>
-                <button class="social-btn facebook">Continue with Facebook</button>
-            </div>
-        </div>
-    </div>
-
     <div class="marketplace-container">
         <div class="filters-section">
-            <input type="search" id="searchBar" class="search-bar" placeholder="Search retro games...">
+            <input type="search" id="searchBar" class="search-bar" placeholder="Search bar">
             <div class="filter-options">
                 <select id="consoleFilter" class="filter-select">
                     <option value="">Console Era</option>
@@ -88,19 +50,10 @@
         </div>
 
         <div id="marketplaceGrid" class="products-grid">
-            <!-- Items will be populated by JavaScript -->
+            <!-- Product cards will be inserted here by JavaScript -->
         </div>
     </div>
 
-    <!-- Achievement Notification -->
-    <div id="achievementNotification" class="achievement-notification" role="alert">
-        <h3>Achievement Unlocked!</h3>
-        <p id="achievementText"></p>
-    </div>
-
-    <!-- Error Notification Container -->
-    <div id="errorNotification" class="error-notification" aria-live="polite"></div>
-
-    <script src="JS\script.js"></script>
+    <script src="JS\marketplace.js"></script>
 </body>
 </html>
