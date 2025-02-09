@@ -6,7 +6,7 @@
     <title>RetroCollect - My Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
+    <script defer src="collection.js"></script>
 </head>
 
 <body>
@@ -19,14 +19,10 @@
             <a href="tradeCenter.html">Trade Center</a>
             <a href="achievements.html">Achievements</a>
             <a href="leaderboard.html">Leaderboard</a>
+            <a href="contactUs.html">Contact Us</a>
             <button id="loginBtn" class="nav-button">Login</button>
         </div>
     </nav>
-
-    <!-- Login Modal (same as other pages) -->
-    <div id="loginModal" class="modal" role="dialog" aria-labelledby="loginModalTitle">
-        <!-- Same login modal content as other pages -->
-    </div>
 
     <div class="marketplace-container">
         <h1>My Collection</h1>
@@ -34,15 +30,15 @@
         <!-- Collection Stats -->
         <div class="collection-stats">
             <div class="stat-card">
-                <div class="stat-value" id="totalItems">31</div>
+                <div class="stat-value">31</div>
                 <div class="stat-label">Total Items</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="collectionScore">100000</div>
+                <div class="stat-value">100000</div>
                 <div class="stat-label">Collection Score</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value" id="completedSets">0</div>
+                <div class="stat-value">0</div>
                 <div class="stat-label">Completed Sets</div>
             </div>
         </div>
@@ -50,50 +46,27 @@
         <!-- Console Collections -->
         <h2>Console Collections</h2>
         <div class="console-collections">
-            <div class="console-card">
+            <div class="console-card" data-progress="60">
                 <h3>PlayStation 1</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 60%"></div>
-                </div>
+                <div class="progress-bar"></div>
                 <p>12/20 Items (60% Complete)</p>
-                <button class="view-details">View Details</button>
+                <a href="#ps1-details" class="view-details">View Details</a>
             </div>
 
-            <div class="console-card">
+            <div class="console-card" data-progress="90">
                 <h3>Nintendo 64</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 90%"></div>
-                </div>
+                <div class="progress-bar"></div>
                 <p>14/15 Items (90% Complete)</p>
-                <button class="view-details">View Details</button>
+                <a href="#n64-details" class="view-details">View Details</a>
             </div>
 
-            <div class="console-card">
+            <div class="console-card" data-progress="30">
                 <h3>SEGA Genesis</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 30%"></div>
-                </div>
+                <div class="progress-bar"></div>
                 <p>5/18 Items (30% Complete)</p>
-                <button class="view-details">View Details</button>
+                <a href="#sega-details" class="view-details">View Details</a>
             </div>
         </div>
-
-        <!-- Collection Items -->
-        <h2>Recent Additions</h2>
-        <div id="collectionGrid" class="collection-grid">
-            <!-- Collection items will be populated by JavaScript -->
-        </div>
     </div>
-
-    <!-- Achievement Notification -->
-    <div id="achievementNotification" class="achievement-notification" role="alert">
-        <h3>Achievement Unlocked!</h3>
-        <p id="achievementText"></p>
-    </div>
-
-    <!-- Error Notification Container -->
-    <div id="errorNotification" class="error-notification" aria-live="polite"></div>
-
-    <script src="JS\collection.js"></script>
 </body>
 </html>
