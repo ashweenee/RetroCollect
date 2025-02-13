@@ -61,6 +61,7 @@ RetroCollect is an interactive, responsive web platform designed for retro gamin
   - `leaderboard.html`: View top collectors
   - `achievements.html`: Track user progress and rewards
   - `contactUs.html`: Enquire to website owners about anything
+  - `checkout.html`: Users to buy items
 
 - **Assets:**
   - **CSS Folder:** Contains stylesheets for layout and design.
