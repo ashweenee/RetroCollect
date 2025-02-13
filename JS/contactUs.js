@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
         
         // [STEP 3]: Create our JSON data
         let jsondata = {
-            "name": fullName,
+            "fullName": fullName,  
             "email": email,
-            "message": message
+            "message": message,
         };
         
         // [STEP 4]: Create our AJAX settings
